@@ -58,7 +58,7 @@ hide_edge_borders both
 floating_modifier $mod
 
 # start a terminal:
-bindsym $mod+Return exec alacritty #termite 
+bindsym $mod+Return exec alacritty
 
 # kill focused window:
 bindsym $mod+c kill
@@ -74,10 +74,10 @@ bindsym $mod+F1 exec "xed ~/.config/i3/keybindings"
 bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus:
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+u focus up
-bindsym $mod+ntilde focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -98,7 +98,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation:
-bindsym $mod+h split h
+bindsym $mod+shift+h split h
 
 # split in vertical orientation:
 bindsym $mod+v split v
@@ -124,57 +124,31 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # workspace-edit:
-set $ws1 "1:  "
-set $ws2 "2:   "
-set $ws3 "3:  "
-set $ws4 "4:  "
-set $ws5 "5:  "
-set $ws6 "6:  "
-set $ws7 "7:  "
+set $ws1 "1 : "
+set $ws2 "2 : "
+set $ws3 "3 : "
+set $ws4 "4 : "
+set $ws5 "5 : "
+set $ws6 "6 : "
+set $ws7 "7 : "
 
 bindsym $mod+s exec --no-startup-id ~/.config/i3/scripts/empty_workspace.sh
 
 # autostart start applications + bind program to workspace:
-assign [class="Termite"] $ws1
-for_window [class=Termite] focus
-
-assign [class="Xfce4-terminal"] $ws1
-for_window [class=Xfce4-terminal] focus
-
 assign [class="Alacritty"] $ws1
 for_window [class=Alacritty] focus
 
 assign [class="code"] $ws2
 for_window [class=code] focus
+assign [class="jetbrains-webstorm"] $ws2
+for_window [class=jetbrains-webstorm] focus
 
 assign [class="(?i)firefox"] $ws3
 for_window [class=(?i)firefox] focus
-
 assign [class="Thunar"] $ws4
 for_window [class=Thunar] focus
-
 assign [class="discord"] $ws5
 for_window [class=discord] focus
-
-assign [class="(?i)libreoffice.*"] $ws6
-for_window [class=(?i)libreoffice.*] focus
-assign [class="(?i)soffice"] $ws6
-for_window [class=(?i)soffice] focus
-
-assign [class="okular"] $ws6
-for_window [class=okular] focus
-
-assign [class="vlc"] $ws7
-for_window [class=vlc] focus
-
-assign [class="freezer"] $ws7
-for_window [class=freezer] focus
-
-assign [class="GeoGebra"] $ws6
-for_window [class=GeoGebra] focus
-
-assign [class="qemu"] $ws7
-assign [class="QEMU"] $ws7
 
 # Autostart apps:
 #exec --no-startup-id sleep 2 && xfce4-terminal
@@ -202,6 +176,8 @@ exec --no-startup-id /usr/bin/dunst
 for_window [class="Yad" instance="yad"] floating enable
 for_window [class="Galculator" instance="galculator"] floating enable
 for_window [class="Blueberry.py" instance="blueberry.py"] floating enable
+for_window [class="Gnome-calculator" instance="*"] floating enable
+for_window [class="Blueman-manager" instance="*"] floating enable
 
 # set floating (nontiling) for special apps:
 for_window [class="Xsane" instance="xsane"] floating enable
@@ -248,8 +224,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 # exit i3 (logs you out of your X session):
-#bindsym $mod+Shift+q exec ~/.config/rofi/bin/powermenu #~/.config/i3/scripts/shutdown_menu -p rofi -c
-bindsym $mod+Shift+q exec ~/.config/i3/scripts/shutdown_menu
+bindsym $mod+Shift+q exec ~/.config/i3/scripts/shutdown_menu -p rofi -c
 
 # resize window (you can also use the mouse for that):
 mode "resize" {
@@ -296,59 +271,25 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # App shortcuts
-bindsym $mod+w exec "/usr/bin/firefox"
-bindsym $mod+n exec "/usr/bin/thunar"
-bindsym Print exec "scrot ~/%Y-%m-%d-%T-screenshot.png"
+#bindsym $mod+w exec "/usr/bin/firefox"
+#bindsym $mod+n exec "/usr/bin/thunar"
 
-# Redirect sound to headphones
+###	To take screenshow
+#bindsym Print exec "scrot ~/Images/screenshots/%Y-%m-%d-%T-screenshot.png"
+
+# Redirect Gound to headphones
 bindsym $mod+m exec "/usr/local/bin/switch-audio-port"
 
 
 # Lock the system
-#bindsym $mod+l exec light-locker-command -l #i3lock -i ~/.config/i3/i3-lock-screen.png -t -f
+#bindsym $mod+Ctrl+l exec i3lock -i ~/.config/i3/i3-lock-screen.png -t -f
 
-# set_from_resource $base0    i3wm.color12    #839496
-# set_from_resource $base00   i3wm.color11    #657b83
-# set_from_resource $base01   i3wm.color10    #586e75
-# set_from_resource $base02   i3wm.color0     #073642
-# set_from_resource $base03   i3wm.color8     #002b36
-# set_from_resource $base1    i3wm.color14    #93a1a1
-# set_from_resource $base2    i3wm.color7     #eee8d5
-# set_from_resource $base3    i3wm.color15    #fdf6e3
-
-# set_from_resource $background i3wm.background $base3
-# set_from_resource $foreground i3wm.foreground $base00
-
-#	Set nord palette
-set $nord0		#2e3440
-set $nord1		#3b4252
-set $nord2		#434c5e
-set $nord3		#4c566a
-set $nord4		#d8dee9
-set $nord5		#e5e9f0
-set $nord6		#eceff4
-set $nord7		#8fbcbb
-set $nord8		#88c0d0
-set $nord9		#81a1c1
-set $nord10		#bf616a
-set $nord11		#d08770
-set $nord12		#ebcb8b
-set $nord13		#a3be8c
-set $nord14		#b48ead
-
-
-#set $bg-color            #fdf6e3
-set	$bg-color							$nord0
-#set	$inactive-bg-color		#2f343f
-set	$inactive-bg-color		$nord0
-#set	$text-color					#f3f4f5
-set	$text-color						$nord6
-#set	$inactive-text-color	#676e7d
-set	$inactive-text-color	$nord5
-#set	$urgent-bg-color			#e53935
-set	$urgent-bg-color			$nord11
-#set	$indicator-color			#a0a0a0
-set	$indicator-color			$nord12
+set $bg-color            #2f343f
+set $inactive-bg-color   #2f343f
+set $text-color          #f3f4f5
+set $inactive-text-color #676e7d
+set $urgent-bg-color     #e53935
+set $indicator-color     #a0a0a0
 
 # set window colors:
 #                       border             background         text                 indicator
@@ -358,47 +299,78 @@ client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-text-col
 client.urgent           $urgent-bg-color   $urgent-bg-color   $text-color          $indicator-color
 
 
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available):
+
+
+
 bar {
-	font pango:Noto Sans Regular 11, FontAwesome 11
+	font pango: Raleway SemiBold, FontAwesome 11
 	status_command i3blocks -c ~/.config/i3/i3blocks.conf 
 	position bottom
+	separator_symbol " "
 
-	height 27
+	workspace_min_width 46
 
-	colors {
-		separator						$nord4
-		background					$nord0
-		statusline					$nord0
-		#	This is 					#border	#content	#text
-		focused_workspace		$nord4 	$nord4	$nord1
-		active_workspace		$nord4 	$nord4	$nord1
-		inactive_workspace	$nord2	$nord2	$nord6
-		urgent_workspace		$nord11 $nord11 $nord4
-	}
+	height 28
+	
+
+	tray_output primary
+
+    colors {
+      separator          $text-color
+        background         $bg-color
+        statusline         $bg-color
+        focused_workspace  $indicator-color   $indicator-color		$text-color          	$indicator-color
+        active_workspace   $indicator-color		$indicator-color		$text-color 					$indicator-color
+        inactive_workspace $inactive-bg-color $inactive-bg-color	$inactive-text-color $indicator-color
+        urgent_workspace   $urgent-bg-color   $urgent-bg-color		$text-color          $indicator-color
+    }
 }
-
-##	Things from dotfile https://github.com/devdevdevdevdeo/dotfiles/blob/master/i3/config
-#class                      border         backgr	  text	   indicator
-# client.focused		        #2C313D        #2e3440        $background  $background
-# client.focused_inactive	    #2C313D        #303743        $background  $background
-# client.unfocused	        #2C313D        #303743        $background  $background
-# client.urgent		        $background    #282d37    $background  $background
-# client.placeholder	        $background    #282D37    $background  $background
 
 # rofi bindings fancy application menu
 bindsym $mod+i exec rofi -modi drun -show drun
-#bindsym $mod+i exec ~/.config/rofi/bin/launcher_text
+                
+bindsym F9 exec rofi -modi drun -show drun -line-padding 4 \
+                -columns 2 -padding 50 -hide-scrollbar \
+                -show-icons -drun-icon-theme "Arc-X-D"
 
-bindsym F9 exec rofi -modi drun -show drun
 
-#bindsym mod+o exec ~/.config/rofi/bin/menu_quicklinks
+bindsym $mod+o exec rofi -show window -line-padding 4 \
+                -lines 6 -padding 50 -hide-scrollbar \
+                -show-icons -drun-icon-theme "Arc-X-D"
 
-bindsym F10 exec rofi -show window
-bindsym $mod+o exec rofi -show window
-           
+bindsym F10 exec rofi -show window -line-padding 4 \
+                -lines 6 -padding 50 -hide-scrollbar \
+                -show-icons -drun-icon-theme "Arc-X-D"
+                
 
-## Starts mega
-exec mega-sync
+##### CUSTOM
+#use xev in order to get keys keycode
+
+## BRIGHTNESS
+
+bindsym XF86MonBrightnessDown exec ~/.config/i3/scripts/lowerBrightness.sh
+bindsym XF86MonBrightnessUp exec ~/.config/i3/scripts/upBrightness.sh
+
+## NIGHT MODE
+
+#bindsym $mod+shift+x exec redshift -o
+#bindsym $mod+x exec redshift -x
+
+#exec redshift-gtk
+
+## I3 logs
+# Use 25 MiB of RAM for debug logs
+exec i3 --shmlog-size=26214400
+
+## Mega sync
+exec mega-sync 
+
+## Starts solaar for logitech mouse
+exec solaar --window=hide
+
+# Electron hack, hide menubar
+for_window [all] border pixel
 
