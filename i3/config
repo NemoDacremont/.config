@@ -202,6 +202,7 @@ exec --no-startup-id /usr/bin/dunst
 for_window [class="Yad" instance="yad"] floating enable
 for_window [class="Galculator" instance="galculator"] floating enable
 for_window [class="Blueberry.py" instance="blueberry.py"] floating enable
+for_window [class="org.gnome.clocks" instance="Clocks"] floating enable
 
 # set floating (nontiling) for special apps:
 for_window [class="Xsane" instance="xsane"] floating enable
@@ -401,4 +402,8 @@ bindsym $mod+o exec rofi -show window
 
 ## Starts mega
 exec mega-sync
+
+# hack electron
+for_window [all] border pixel
+
 
