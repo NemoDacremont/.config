@@ -48,7 +48,7 @@ require('lspconfig')['pyright'].setup{
 	--single_file_support = false,
 	root_dir = function()
 		return vim.fn.getcwd()
-	end,
+	end
 }
 --
 
