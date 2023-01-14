@@ -275,7 +275,7 @@ bindsym XF86AudioPrev exec playerctl previous
 #bindsym $mod+n exec "/usr/bin/thunar"
 
 ###	To take screenshow
-#bindsym Print exec "scrot ~/Images/screenshots/%Y-%m-%d-%T-screenshot.png"
+bindsym Print exec "scrot ~/Images/screenshots/%Y-%m-%d-%T-screenshot.png"
 
 # Redirect Gound to headphones
 bindsym $mod+m exec "/usr/local/bin/switch-audio-port"
@@ -331,21 +331,14 @@ bar {
 
 # rofi bindings fancy application menu
 bindsym $mod+i exec rofi -modi drun -show drun
-                
-bindsym F9 exec rofi -modi drun -show drun -line-padding 4 \
-                -columns 2 -padding 50 -hide-scrollbar \
-                -show-icons -drun-icon-theme "Arc-X-D"
-
-bindsym F9 exec rofi -modi drun -show drun
 
 bindsym $mod+o exec rofi -show window -line-padding 4 \
                 -lines 6 -padding 50 -hide-scrollbar \
                 -show-icons -drun-icon-theme "Arc-X-D"
 
-bindsym F10 exec rofi -show window -line-padding 4 \
-                -lines 6 -padding 50 -hide-scrollbar \
-                -show-icons -drun-icon-theme "Arc-X-D"
-                
+# bindsym F10 exec rofi -show window -line-padding 4 \
+#                 -lines 6 -padding 50 -hide-scrollbar \
+#                 -show-icons -drun-icon-theme "Arc-X-D"
 
 ##### CUSTOM
 #use xev in order to get keys keycode
@@ -360,7 +353,7 @@ bindsym XF86MonBrightnessUp exec ~/.config/i3/scripts/upBrightness.sh
 #bindsym $mod+shift+x exec redshift -o
 #bindsym $mod+x exec redshift -x
 
-#exec redshift-gtk
+exec redshift-gtk
 
 ## I3 logs
 # Use 25 MiB of RAM for debug logs

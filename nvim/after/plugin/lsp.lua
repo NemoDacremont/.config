@@ -49,9 +49,6 @@ require('lspconfig')['pyright'].setup{
 	root_dir = function()
 		return vim.fn.getcwd()
 	end,
-	on_attach = function ()
-		print("onatachpyright")
-	end
 }
 --
 
