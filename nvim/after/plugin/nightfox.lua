@@ -95,4 +95,4 @@ local groups = {
 require("nightfox").setup({ palettes = palettes, specs = specs, groups = groups })
 
 -- setup must be called before loading
-ColorMyPencils("nordfox")
+-- ColorMyPencils("nordfox")
