@@ -166,7 +166,11 @@ exec --no-startup-id picom -cC
 #set wallpaper:
 exec --no-startup-id nitrogen --restore
 
-#set powersavings for display:
+
+## Polybar
+exec_always --no-startup-id ~/.config/polybar/launch.sh &
+
+# set powersavings for display:
 exec --no-startup-id xset s 480 dpms 600 600 600
 
 # Desktop notifications_
@@ -178,6 +182,7 @@ for_window [class="Galculator" instance="galculator"] floating enable
 for_window [class="Blueberry.py" instance="blueberry.py"] floating enable
 for_window [class="Gnome-calculator" instance="*"] floating enable
 for_window [class="Blueman-manager" instance="*"] floating enable
+for_window [class="Nm-connection-editor" instance="*"] floating enable
 
 # set floating (nontiling) for special apps:
 for_window [class="Xsane" instance="xsane"] floating enable
@@ -305,30 +310,6 @@ client.urgent           $urgent-bg-color   $urgent-bg-color   $text-color       
 
 
 
-bar {
-	font pango: Raleway SemiBold, FontAwesome 11
-	status_command i3blocks -c ~/.config/i3/i3blocks.conf 
-	position bottom
-	separator_symbol " "
-
-	workspace_min_width 46
-
-	height 28
-	
-
-	tray_output primary
-
-    colors {
-      separator          $text-color
-        background         $bg-color
-        statusline         $bg-color
-        focused_workspace  $indicator-color   $indicator-color		$text-color          	$indicator-color
-        active_workspace   $indicator-color		$indicator-color		$text-color 					$indicator-color
-        inactive_workspace $inactive-bg-color $inactive-bg-color	$inactive-text-color $indicator-color
-        urgent_workspace   $urgent-bg-color   $urgent-bg-color		$text-color          $indicator-color
-    }
-}
-
 # rofi bindings fancy application menu
 bindsym $mod+i exec rofi -modi drun -show drun
 
@@ -350,20 +331,20 @@ bindsym XF86MonBrightnessUp exec ~/.config/i3/scripts/upBrightness.sh
 
 ## NIGHT MODE
 
-#bindsym $mod+shift+x exec redshift -o
-#bindsym $mod+x exec redshift -x
+# bindsym $mod+shift+x exec redshift -o
+# bindsym $mod+x exec redshift -x
 
-exec redshift-gtk
+exec --no-startup-id redshift-gtk
 
 ## I3 logs
 # Use 25 MiB of RAM for debug logs
-exec i3 --shmlog-size=26214400
+exec --no-startup-id i3 --shmlog-size=26214400
 
 ## Mega sync
-exec mega-sync 
+exec --no-startup-id mega-sync 
 
 ## Starts solaar for logitech mouse
-exec solaar --window=hide
+exec --no-startup-id solaar --window=hide
 
 # Electron hack, hide menubar
 for_window [all] border pixel
