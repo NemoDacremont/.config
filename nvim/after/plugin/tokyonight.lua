@@ -35,4 +35,4 @@ require("tokyonight").setup({
   on_highlights = function(highlights, colors) end,
 })
 
-ColorMyPencils("tokyonight")
+-- ColorMyPencils("tokyonight")

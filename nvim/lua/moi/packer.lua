@@ -47,6 +47,13 @@ return require('packer').startup(function(use)
 	  }
   }
 
+	use({
+		"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+		config = function()
+			require("lsp_lines").setup()
+		end,
+	})
+
 	use "lukas-reineke/indent-blankline.nvim"
 
 	use 'vim-airline/vim-airline'
@@ -62,6 +69,14 @@ return require('packer').startup(function(use)
 
 	use 'folke/tokyonight.nvim'
 	use 'EdenEast/nightfox.nvim'
+
+	use "rebelot/kanagawa.nvim"
+	use 'artanikin/vim-synthwave84'
+	use 'jaredgorski/spacecamp'
+	use 'ayu-theme/ayu-vim'
+	use 'navarasu/onedark.nvim'
+
+	use 'norcalli/nvim-colorizer.lua'
 
 end)
 
