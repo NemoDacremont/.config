@@ -1,3 +1,3 @@
 
-ayucolor = "dark"
+vim.g.ayucolor = "dark"
 
