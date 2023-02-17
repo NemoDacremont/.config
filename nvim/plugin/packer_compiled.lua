@@ -156,12 +156,6 @@ _G.packer_plugins = {
     path = "/home/odasta/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
   },
-  ["minimap.vim"] = {
-    config = { "\27LJ\2\n½\4\0\0\2\0\17\0-6\0\0\0009\0\1\0)\1\n\0=\1\2\0006\0\0\0009\0\1\0)\1\1\0=\1\3\0006\0\0\0009\0\1\0)\1\0\0=\1\4\0006\0\0\0009\0\1\0)\1\1\0=\1\5\0006\0\0\0009\0\1\0'\1\a\0=\1\6\0006\0\0\0009\0\1\0)\1\1\0=\1\b\0006\0\0\0009\0\1\0)\1\1\0=\1\t\0006\0\0\0009\0\1\0)\1\1\0=\1\n\0006\0\0\0009\0\1\0005\1\f\0=\1\v\0006\0\0\0009\0\1\0005\1\14\0=\1\r\0006\0\0\0009\0\1\0005\1\16\0=\1\15\0K\0\1\0\1\5\0\0\rstartify\nnetrw\rvim-plug\rNvimTree\28minimap_close_filetypes\1\a\0\0\vnofile\fnowrite\rquickfix\rterminal\vprompt\rNvimTree\27minimap_block_buftypes\1\a\0\0\rfugitive\14nvim-tree\vtagbar\bfzf\14telescope\rNvimTree\28minimap_block_filetypes\23minimap_git_colors\29minimap_highlight_search\28minimap_highlight_range\ttest\22minimap_highlight!minimap_auto_start_win_enter\17minimap_left\23minimap_auto_start\18minimap_width\6g\bvim\0" },
-    loaded = true,
-    path = "/home/odasta/.local/share/nvim/site/pack/packer/start/minimap.vim",
-    url = "https://github.com/wfxr/minimap.vim"
-  },
   ["nightfox.nvim"] = {
     loaded = true,
     path = "/home/odasta/.local/share/nvim/site/pack/packer/start/nightfox.nvim",
@@ -256,14 +250,15 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/odasta/.local/share/nvim/site/pack/packer/start/vim-synthwave84",
     url = "https://github.com/artanikin/vim-synthwave84"
+  },
+  vimtex = {
+    loaded = true,
+    path = "/home/odasta/.local/share/nvim/site/pack/packer/start/vimtex",
+    url = "https://github.com/lervag/vimtex"
   }
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: minimap.vim
-time([[Config for minimap.vim]], true)
-try_loadstring("\27LJ\2\n½\4\0\0\2\0\17\0-6\0\0\0009\0\1\0)\1\n\0=\1\2\0006\0\0\0009\0\1\0)\1\1\0=\1\3\0006\0\0\0009\0\1\0)\1\0\0=\1\4\0006\0\0\0009\0\1\0)\1\1\0=\1\5\0006\0\0\0009\0\1\0'\1\a\0=\1\6\0006\0\0\0009\0\1\0)\1\1\0=\1\b\0006\0\0\0009\0\1\0)\1\1\0=\1\t\0006\0\0\0009\0\1\0)\1\1\0=\1\n\0006\0\0\0009\0\1\0005\1\f\0=\1\v\0006\0\0\0009\0\1\0005\1\14\0=\1\r\0006\0\0\0009\0\1\0005\1\16\0=\1\15\0K\0\1\0\1\5\0\0\rstartify\nnetrw\rvim-plug\rNvimTree\28minimap_close_filetypes\1\a\0\0\vnofile\fnowrite\rquickfix\rterminal\vprompt\rNvimTree\27minimap_block_buftypes\1\a\0\0\rfugitive\14nvim-tree\vtagbar\bfzf\14telescope\rNvimTree\28minimap_block_filetypes\23minimap_git_colors\29minimap_highlight_search\28minimap_highlight_range\ttest\22minimap_highlight!minimap_auto_start_win_enter\17minimap_left\23minimap_auto_start\18minimap_width\6g\bvim\0", "config", "minimap.vim")
-time([[Config for minimap.vim]], false)
 -- Config for: Comment.nvim
 time([[Config for Comment.nvim]], true)
 try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fComment\frequire\0", "config", "Comment.nvim")

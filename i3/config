@@ -49,7 +49,7 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 # clear in small sizes. However, its unicode glyph coverage is limited, the old
 # X core fonts rendering does not support right-to-left and this being a bitmap
 # font, it doesn’t scale on retina/hidpi displays.
-font pango:Noto Sans Regular 10
+font pango:Noto Sans Regular 12
 
 # thin borders:
 hide_edge_borders both
@@ -334,7 +334,7 @@ bindsym XF86MonBrightnessUp exec ~/.config/i3/scripts/upBrightness.sh
 # bindsym $mod+shift+x exec redshift -o
 # bindsym $mod+x exec redshift -x
 
-exec --no-startup-id redshift-gtk
+# exec --no-startup-id redshift-gtk
 
 ## I3 logs
 # Use 25 MiB of RAM for debug logs
