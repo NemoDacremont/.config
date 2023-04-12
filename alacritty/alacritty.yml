@@ -1,7 +1,7 @@
 # Configuration for Alacritty, the GPU enhanced terminal emulator.
 # Theme
 import:
-  - ~/.alacritty-coloscheme/themes/ayu_dark.yaml
+  - ~/.alacritty-colorscheme/themes/nord.yaml
 
 # Import additional configuration files
 #

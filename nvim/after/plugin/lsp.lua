@@ -1,13 +1,21 @@
 
 local lsp = require('lsp-zero')
 
+local sig_config = {
+	log_path = vim.fn.expand("$HOME") .. "/tmp/sig.log",
+	debug = true,
+	hint_enable = false,
+	handler_opts = { border = "single" },
+	always_trigger = false,
+	timer_interval = 400,
+	max_width = 80,
+}
+require "lsp_signature".setup(sig_config)
+
+
 lsp.preset('recommended')
 
-lsp.ensure_installed({
-	'tsserver',
-	'eslint',
-	'pyright',
-})
+-- lsp.ensure_installed()
 
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
@@ -42,12 +50,12 @@ end)
 lsp.setup()
 
 -- Pyright
-require('lspconfig')['pyright'].setup{
-	--single_file_support = false,
-	root_dir = function()
-		return vim.fn.getcwd()
-	end
-}
+-- require('lspconfig')['pyright'].setup{
+-- 	--single_file_support = false,
+-- 	root_dir = function()
+-- 		return vim.fn.getcwd()
+-- 	end
+-- }
 --
 
 vim.diagnostic.config({
@@ -55,5 +63,8 @@ vim.diagnostic.config({
 })
 
 
+
+-- let asyncomplete_auto_completeopt = 0
+-- set completeopt=menuone,noinsert,noselect,preview
 
 
