@@ -21,8 +21,6 @@ require("nvim-tree").setup({
         { key = "<leader>u", action = "dir_up" },
         { key = "<leader>co", action = "NvimTreeCollapse" },
         { key = "<leader><C-r>", action = "NvimTreeRefresh" },
-        { key = "<leader><C-r>", action = "NvimTreeRefresh" },
-        { key = "<leader><C-r>", action = "NvimTreeRefresh" },
 
       },
     },
