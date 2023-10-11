@@ -40,5 +40,8 @@ vim.opt.colorcolumn = "80"
 vim.opt.termguicolors = true
 
 
+-- vim.opt.nocompatible = true
+-- vim.opt.syntax = true
+-- filetype plugin on
 
 

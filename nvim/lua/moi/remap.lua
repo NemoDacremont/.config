@@ -9,3 +9,12 @@ vim.keymap.set("v", "<C-j>", "}")
 vim.keymap.set("v", "<C-k>", "{")
 
 
+vim.keymap.set("i", "(", "()<left>")
+vim.keymap.set("i", "[", "[]<left>")
+vim.keymap.set("i", "{", "{}<left>")
+
+vim.keymap.set("i", '"', '""<left>')
+
+vim.keymap.set("i", "'", "''<left>")
+
+

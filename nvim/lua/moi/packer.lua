@@ -7,6 +7,15 @@ return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
+	-- nvim Tree
+	use {
+		'nvim-tree/nvim-tree.lua',
+		requires = {
+			'nvim-tree/nvim-web-devicons', -- optional, for file icons
+		},
+		tag = 'nightly' -- optional, updated every week. (see issue #1193)
+	}
+
   use({
 	  'nvim-telescope/telescope.nvim', tag = '0.1.0',
 	  -- or                            , branch = '0.1.x',
@@ -18,8 +27,6 @@ return require('packer').startup(function(use)
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
 
   use 'nvim-treesitter/playground'
-
-  use 'ThePrimeagen/harpoon'
 
   use 'mbbill/undotree'
 
@@ -59,23 +66,9 @@ return require('packer').startup(function(use)
 
 	use 'vim-airline/vim-airline'
 
-	-- nvim Tree
-	use {
-		'nvim-tree/nvim-tree.lua',
-		requires = {
-			'nvim-tree/nvim-web-devicons', -- optional, for file icons
-		},
-		tag = 'nightly' -- optional, updated every week. (see issue #1193)
-	}
-
 	use 'folke/tokyonight.nvim'
-	use 'EdenEast/nightfox.nvim'
 
 	use "rebelot/kanagawa.nvim"
-	use 'artanikin/vim-synthwave84'
-	use 'jaredgorski/spacecamp'
-	use 'ayu-theme/ayu-vim'
-	use 'navarasu/onedark.nvim'
 
 	use 'norcalli/nvim-colorizer.lua'
 
