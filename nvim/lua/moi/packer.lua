@@ -81,6 +81,7 @@ return require('packer').startup(function(use)
 
 	use 'lervag/vimtex'
 
+	use 'habamax/vim-godot'
 
 end)
 

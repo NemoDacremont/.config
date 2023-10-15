@@ -1,0 +1,56 @@
+#!/bin/zsh
+
+if [ $# -le 0 ]
+then
+	echo "Usage: ./main <filename> <template>"
+	exit 1
+fi
+
+OUT_FILE=$1
+TEMPLATE=$2
+TMP_FILENAME=skeleton.tmp
+
+if [ ! -f ~$USER/Templates/template.$TEMPLATE ];
+then
+	echo "The template isn't available"
+	exit 2
+fi
+
+cp ~$USER/Templates/template.$TEMPLATE $TMP_FILENAME
+
+# Date
+DATE_TMP_FILENAME=skeleton.tmp_date
+sed "s/date_placeholder/$(date '+%Y-%m-%d %H:%M')/" $TMP_FILENAME > $DATE_TMP_FILENAME
+rm -f $TMP_FILENAME
+TMP_FILENAME=$DATE_TMP_FILENAME
+
+# Filename
+OUTFILE_TMP_FILENAME=skeleton.tmp_filename
+sed "s/filename_placeholder/$OUT_FILE/" $TMP_FILENAME > $OUTFILE_TMP_FILENAME
+rm -f $TMP_FILENAME
+TMP_FILENAME=$OUTFILE_TMP_FILENAME
+
+# Name (user)
+if [ ! -z ${NAME} ]
+then
+	NAME_TMP_FILENAME=skeleton.tmp_name
+	sed "s/name_placeholder/$NAME/" $TMP_FILENAME > $NAME_TMP_FILENAME
+	rm -f $TMP_FILENAME
+	TMP_FILENAME=$NAME_TMP_FILENAME
+fi
+
+
+# Mail (user)
+if [ ! -z ${MAIL} ]
+then
+	MAIL_TMP_FILENAME=skeleton.tmp_mail
+	sed "s/mail_placeholder/$MAIL/" $TMP_FILENAME > $MAIL_TMP_FILENAME
+	rm -f $TMP_FILENAME
+	TMP_FILENAME=$MAIL_TMP_FILENAME
+fi
+
+
+mv $TMP_FILENAME $OUT_FILE
+
+echo $OUT_FILE have been created with the $TEMPLATE template
+

@@ -1,6 +1,4 @@
 
-
-
 vim.opt.nu = true
 
 -- tabs
