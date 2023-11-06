@@ -25,4 +25,13 @@ alias 1A="cd /home/odasta/Documents/Cours/1A"
 alias japonais="cd /home/odasta/Documents/Cours/1A/Japonais/"
 alias progGodot="cd /home/odasta/Documents/programmation/godot/"
 alias prog="cd /home/odasta/Documents/programmation/"
+alias cl="clear"
+
+alias mfaverge="firefox https://cours-mf.gitlabpages.inria.fr/if104"
+alias floreal="firefox https://www.labri.fr/perso/fmoranda/pg101"
+alias ekip="firefox https://drive.google.com/drive/u/0/folders/1D_q-ZTwh-Zd8sTp-ThG8xjTqbiJ-0Rm1"
+alias coursAlgo="firefox https://drive.google.com/drive/u/0/folders/1eEXt0UcmV9PeU59vzruPzPko8rfXRWwP"
+alias projet="firefox https://www.labri.fr/perso/renault/working/index.php"
+
+alias sourceNVM="source '/usr/share/nvm/init-nvm.sh'"
 
