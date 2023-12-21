@@ -4,7 +4,7 @@ local lsp_zero = require('lsp-zero')
 lsp_zero.extend_lspconfig()
 
 local sig_config = {
-	log_path = vim.fn.expand("$HOME") .. "/tmp/sig.log",
+	-- log_path = vim.fn.expand("$HOME") .. "/tmp/sig.log",
 	debug = true,
 	hint_enable = false,
 	handler_opts = { border = "single" },
@@ -103,7 +103,7 @@ lsp_zero.on_attach(function(client, bufnr)
   vim.keymap.set("n", "[d", vim.diagnostic.goto_next, opts)
   vim.keymap.set("n", "]d", vim.diagnostic.goto_prev, opts)
   vim.keymap.set("n", "<leader>vca", vim.lsp.buf.code_action, opts)
-  vim.keymap.set("n", "<leader>vrr", vim.lsp.buf.references, opts)
+  vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
   vim.keymap.set("n", "<leader>vrn", vim.lsp.buf.rename, opts)
   vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
 end)
@@ -112,12 +112,20 @@ end)
 lsp_zero.setup()
 
 -- Pyright
--- require('lspconfig')['pyright'].setup{
--- 	--single_file_support = false,
--- 	root_dir = function()
--- 		return vim.fn.getcwd()
--- 	end
--- }
+require('lspconfig')['pyright'].setup{
+	--single_file_support = false,
+	root_dir = function()
+		return vim.fn.getcwd()
+	end
+}
+
+require('lspconfig')['asm_lsp'].setup{
+	--single_file_support = false,
+	root_dir = function()
+		return vim.fn.getcwd()
+	end
+}
+
 -- --
 --
 -- vim.diagnostic.config({
