@@ -12,11 +12,11 @@ configuration {
 
 * {
 	font									: "Raleway Medium 12";
-	foreground						: #E6E1CF;
-	background-color 			: #0F1419;
-	active-background			: #14191F;
-	urgent-background			: #FF3333;
-	urgent-foreground: #E6E1CF;
+	foreground						: #eceff4;
+	background-color 			: #2e3440;
+	active-background			: #81a1c1;
+	urgent-background			: #d08770;
+	urgent-foreground: #d08770;
 
 	selected-background		: @active-background;
 	selected-urgent-background	: @urgent-background;
@@ -144,4 +144,3 @@ configuration {
 	str							: ": ";
 	text-color					: @foreground;
 }
-
