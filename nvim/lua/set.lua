@@ -3,7 +3,11 @@
 vim.g.loaded_netrwPlugin = 1
 vim.g.loaded_netrw = 1
 
+vim.g.relativenumber = 1
+
+
 vim.opt.nu = true
+vim.opt.rnu = true
 
 -- tabs
 
@@ -15,7 +19,7 @@ vim.opt.smarttab = true
 vim.opt.smartindent = true
 vim.opt.expandtab = false
 
-vim.g.python_recommended_style = 0
+-- vim.g.python_recommended_style = 0
 ---
 
 

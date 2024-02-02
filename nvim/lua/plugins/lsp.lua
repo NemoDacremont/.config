@@ -49,8 +49,6 @@ local config = function()
 		mapping = cmp.mapping.preset.insert({
 			-- `Enter` key to confirm completion
 			['<CR>'] = cmp.mapping.confirm({select = false}),
-			['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-			['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
 			['<C-y>'] = cmp.mapping.confirm({ select = true }),
 			['<C-Space>'] = cmp.mapping.complete(),
 			['<Tab>'] = cmp_action.luasnip_supertab(),
@@ -119,6 +117,26 @@ local config = function()
 			return vim.fn.getcwd()
 		end
 	}
+
+	require('lspconfig')['ltex'].setup{
+		settings = {
+			ltex = {
+				language = "fr_FR",
+				diagnosticSeverity = "information",
+				sentenceCacheSize = 2000,
+				additionalRules = {
+					enablePickyRules = true,
+					motherTongue = "fr",
+				},
+				disabledRules = {
+					fr = { "APOS_TYP", "FRENCH_WHITESPACE" }
+				},
+			},
+		},
+	}
+
+
+
 
 	require('lspconfig')['asm_lsp'].setup{
 		--single_file_support = false,
