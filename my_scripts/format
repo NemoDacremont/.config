@@ -1,0 +1,128 @@
+#!/bin/env python
+
+import os
+import sys
+import re
+import argparse
+
+typesRegExp = {
+	# r': list\[.*?\]': "",
+	# r': list': "",
+	# r'-> list\[.*?\]': "",
+	# r'-> list': "",
+	# r': dict': "",
+	# r'-> dict': "",
+	# r': int': "",
+	# r': float': "",
+	# r': str': "",
+	# r'-> int': "",
+	# r'-> float': "",
+	# r'-> str': "",
+	# r': Temps': "",
+	# r'-> Temps': "",
+	r' {4}': "\t"
+}
+
+supportedExtensions: list[str] = [
+	'c',
+	'header (.h, c)',
+	'python',
+	'js',
+	'ts',
+	'css',
+	'html',
+]
+
+filesRegexp: list = [
+	r'[\w/]+\.c$',
+	r'[\w/]+\.py$',
+	r'[\w/]+\.h$',
+	r'[\w/]+\.js$',
+	r'[\w/]+\.ts$',
+	r'[\w/]+\.css$',
+	r'[\w/]+\.html$'
+]
+
+
+for i in range(len(filesRegexp)):
+	filesRegexp[i] = re.compile(filesRegexp[i]);
+
+
+def printUsage():
+	print("Usage:", file=sys.stderr)
+	print("format <file|dir> [additional extensions]", file=sys.stderr)
+	print("Ex: format src cs", file=sys.stderr)
+
+	print("\nDefault matched extensions:", file=sys.stderr)
+	for extension in supportedExtensions:
+		print(extension, file=sys.stderr)
+
+
+
+def testRegexps(filename: str, regexps = filesRegexp):
+	for regexp in regexps:
+		if re.match(regexp, filename):
+			return True
+
+	return False
+
+
+def formatFile(filepath: str, fileRegexps=filesRegexp, filesToExclude: dict[str, int] = {}) -> None:
+	if not os.path.exists(filepath):
+		print("Le fichier en question n'existe pas:", filepath, file=sys.stderr)
+		sys.exit(2)
+
+	if filepath in filesToExclude:
+		return
+
+	if os.path.isdir(filepath):
+		files = os.listdir(filepath)
+		for file in files:
+			formatFile(filepath + "/" + file, fileRegexps, filesToExclude)
+
+	else:
+		if (
+			testRegexps(filepath, fileRegexps)
+		):
+			print("format", filepath)
+			file = open(filepath, "r")
+
+			lines = file.readlines()
+			file.close()
+
+			for i in range(len(lines)):
+				# lines[i] = lines[i].replace("	   ", "\t")
+				for regexp in typesRegExp:
+					lines[i] = re.sub(regexp, typesRegExp[regexp], lines[i])
+
+			file = open(filepath, "w")
+			file.writelines(lines)
+
+
+if __name__ == "__main__":
+	parser = argparse.ArgumentParser()
+	parser.add_argument('file_path', type=str, help='File|dir to format')
+	parser.add_argument('--aE', type=str, help='Additional extensions to match')
+	parser.add_argument('--exclude', type=str, help="',' separated list of files to exclude")
+
+	args = parser.parse_args()
+
+	filesToExclude = {}
+	if not args.file_path:
+		parser.error("No file path given")
+
+	additionalExtensions = []
+	if (args.aE):
+		additionalExtensions.append(args.aE)
+
+	if (args.exclude):
+		tmp = args.exclude.split(",")
+		for f in tmp:
+			filesToExclude[f] = 1
+
+	for extension in additionalExtensions:
+		newRegex = re.compile(f'\\w+\\.{extension}')
+		filesRegexp.append(newRegex)
+
+
+	formatFile(args.file_path, filesRegexp, filesToExclude)

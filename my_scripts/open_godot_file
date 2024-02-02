@@ -1,0 +1,2 @@
+#!/usr/bin/yash
+~odasta/.local/bin/st -e /usr/bin/nvim $* || (echo error ! && sleep 2)

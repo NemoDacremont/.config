@@ -2,7 +2,7 @@
 
 if [ $# -le 0 ]
 then
-	echo "Usage: ./main <filename> <template>"
+	echo "Usage: skeleton <filename> <template>"
 	exit 1
 fi
 
@@ -10,13 +10,13 @@ OUT_FILE=$1
 TEMPLATE=$2
 TMP_FILENAME=skeleton.tmp
 
-if [ ! -f ~$USER/Templates/template.$TEMPLATE ];
+if [ ! -f $HOME/Templates/template.$TEMPLATE ];
 then
-	echo "The template isn't available"
+	echo "The template '$TEMPLATE' isn't available"
 	exit 2
 fi
 
-cp ~$USER/Templates/template.$TEMPLATE $TMP_FILENAME
+cp $HOME/Templates/template.$TEMPLATE $TMP_FILENAME
 
 # Date
 DATE_TMP_FILENAME=skeleton.tmp_date
@@ -41,10 +41,10 @@ fi
 
 
 # Mail (user)
-if [ ! -z ${MAIL} ]
+if [ ! -z ${EMAIL} ]
 then
 	MAIL_TMP_FILENAME=skeleton.tmp_mail
-	sed "s/mail_placeholder/$MAIL/" $TMP_FILENAME > $MAIL_TMP_FILENAME
+	sed "s/mail_placeholder/$EMAIL/" $TMP_FILENAME > $MAIL_TMP_FILENAME
 	rm -f $TMP_FILENAME
 	TMP_FILENAME=$MAIL_TMP_FILENAME
 fi
