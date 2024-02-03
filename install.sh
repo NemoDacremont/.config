@@ -1,6 +1,12 @@
 #!/bin/sh
 
+# Japanese IME: anthy
+
 script_pos=$PWD
+
+# pacman command only works on artix
+pacman_opts="-Syu --needed"
+softs_to_dl="dash neovim libx gcc libx11 nsxiv zathura zathura-pdf-mupdf pandoc-bin trizen"
 
 # Make backup file for every files given in argument
 backup() {
@@ -11,6 +17,11 @@ backup() {
 	done
 
 	return 0
+}
+
+
+download_softs() {
+	sudo pacman $pacman_opts $softs_to_dl
 }
 
 
@@ -29,7 +40,7 @@ install_nvim_conf() {
 installX_conf() {
 	echo Copying next files to /etc/X11/xorg.conf.d :
 	ls xorg
-	echo sudo is required for the next command : `sudo backup /etc/X11/xorg.conf.d && cp -r xorg /etc/X11/xorg.conf.d`
+	echo 'sudo is required for the next command : `sudo backup /etc/X11/xorg.conf.d && cp -r xorg /etc/X11/xorg.conf.d`'
 
 	sudo backup /etc/X11/xorg.conf.d && cp -r xorg /etc/X11/xorg.conf.d
 
@@ -44,6 +55,9 @@ install_profile() {
 
 install_shell() {
 	backup $HOME/.shell && cp -r .shell $HOME
+
+	echo 'need root privilege to execute: `sudo chsh $USER -s /bin/dash`'
+	sudo chsh $USER -s /bin/dash
 }
 
 
@@ -71,7 +85,7 @@ install_st() {
 	git clone https://github.com/NemoDacremont/st.git
 	cd st
 
-	make clean install DESTDIR=$HOME/.local
+	make clean install
 	cd $script_pos
 }
 
@@ -82,10 +96,24 @@ install_dwm() {
 	git clone https://github.com/NemoDacremont/dwm.git
 	cd dwm
 
-	make clean install DESTDIR=$HOME/.local
+	make clean install
 	cd $script_pos
 }
 
-install_profile
 
+
+install_nvim_conf
+install_profile
+install_scripts
+install_picom_config
+
+download_softs
+
+# compiled softs
+install_st
+install_dwm
+
+# sudo things
+installX_conf
+install_shell
 
