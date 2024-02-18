@@ -40,9 +40,9 @@ install_nvim_conf() {
 installX_conf() {
 	echo Copying next files to /etc/X11/xorg.conf.d :
 	ls xorg
-	echo 'sudo is required for the next command : `sudo backup /etc/X11/xorg.conf.d && cp -r xorg /etc/X11/xorg.conf.d`'
+	echo 'sudo is required for the next command : `backup /etc/X11/xorg.conf.d && sudo cp -r xorg /etc/X11/xorg.conf.d`'
 
-	sudo backup /etc/X11/xorg.conf.d && cp -r xorg /etc/X11/xorg.conf.d
+	backup /etc/X11/xorg.conf.d && sudo cp -r xorg /etc/X11/xorg.conf.d
 
 	backup $HOME/.xinitrc && cp .xinitrc $HOME
 }
@@ -102,18 +102,18 @@ install_dwm() {
 
 
 
-install_nvim_conf
-install_profile
-install_scripts
-install_picom_config
+# install_nvim_conf
+# install_profile
+# install_scripts
+# install_picom_config
 
-download_softs
+# download_softs
 
 # compiled softs
-install_st
-install_dwm
+# install_st
+# install_dwm
 
 # sudo things
 installX_conf
-install_shell
+# install_shell
 
